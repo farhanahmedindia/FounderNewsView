@@ -5,51 +5,139 @@
   <title>RiskBrief — Security clarity for founders & small teams</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="RiskBrief helps founders and small teams understand, monitor, and reduce cybersecurity risk without enterprise complexity." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Simple CSS -->
   <style>
-    body {
+    :root {
+      --primary-color: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --secondary-color: #0f172a;
+      --text-color: #334155;
+      --light-gray: #f8fafc;
+      --medium-gray: #e2e8f0;
+      --border-color: #e2e8f0;
+      --success-color: #10b981;
+      --warning-color: #f59e0b;
+      --danger-color: #ef4444;
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 0 20px;
     }
 
-    h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
+    /* Header */
+    header {
+      background-color: white;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    h2 {
-      font-size: 26px;
-      margin-top: 60px;
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
     }
 
-    p {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #334155;
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      text-decoration: none;
     }
 
+    .logo i {
+      margin-right: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+
+    nav ul li a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    /* Hero Section */
     .hero {
-      padding: 60px 0;
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="rgba(37, 99, 235, 0.05)" stroke-width="1"/></svg>');
+      background-size: 20px 20px;
+      z-index: -1;
     }
 
     .badge {
       display: inline-block;
-      background: #e0e7ff;
-      color: #3730a3;
-      padding: 6px 14px;
+      background: var(--primary-light);
+      color: var(--primary-color);
+      padding: 6px 16px;
       border-radius: 999px;
       font-size: 14px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 56px;
       margin-bottom: 20px;
-      font-weight: 500;
+      color: var(--secondary-color);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: var(--text-color);
     }
 
     .cta {
@@ -57,63 +145,322 @@
     }
 
     .cta a {
-      display: inline-block;
-      background: #2563eb;
+      display: inline-flex;
+      align-items: center;
+      background: var(--primary-color);
       color: white;
-      padding: 14px 24px;
+      padding: 16px 32px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
+      font-size: 18px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
     }
 
     .cta a:hover {
-      background: #1d4ed8;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
     }
 
+    .cta a i {
+      margin-left: 8px;
+      transition: transform 0.2s;
+    }
+
+    .cta a:hover i {
+      transform: translateX(4px);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 0;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+
+    section p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-color);
+      max-width: 800px;
+    }
+
+    /* Grid Layout */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
 
+    /* Card Styles */
     .card {
       background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-hover-shadow);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: var(--secondary-color);
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .card h3 .emoji {
+      font-size: 28px;
+      margin-right: 12px;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      flex-grow: 1;
+    }
+
+    .card .link {
+      margin-top: 16px;
+      font-weight: 600;
+      color: var(--primary-color);
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    .card .link:hover {
+      color: var(--primary-dark);
+    }
+
+    .card .link i {
+      margin-left: 6px;
+      font-size: 14px;
+    }
+
+    .card .coming-soon {
+      margin-top: 16px;
+      font-style: italic;
+      color: var(--text-color);
+      opacity: 0.7;
+    }
+
+    /* Product Cards */
+    .product-card {
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .product-card.available {
+      border-left-color: var(--success-color);
+    }
+
+    .product-card.coming-soon {
+      border-left-color: var(--medium-gray);
+    }
+
+    /* Features Section */
+    .features-section {
+      background-color: white;
+      border-radius: 20px;
+      padding: 60px;
+      margin: 40px 0;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* Target Audience */
+    .target-audience {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 60px;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .target-audience h2 {
+      color: white;
+    }
+
+    .target-audience p {
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .audience-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .audience-icon {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+    }
+
+    .audience-icon i {
+      font-size: 36px;
+      margin-bottom: 12px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .audience-icon span {
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Footer */
     footer {
       margin-top: 80px;
-      padding: 30px 0;
-      font-size: 14px;
-      color: #64748b;
+      padding: 40px 0;
+      font-size: 16px;
+      color: var(--text-color);
       text-align: center;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        margin-top: 1rem;
+      }
+
+      nav ul li {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .hero {
+        padding: 60px 0;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .features-section,
+      .target-audience {
+        padding: 40px 20px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out;
     }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="#" class="logo">
+          <i class="fas fa-shield-alt"></i>
+          RiskBrief
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#what-we-do">What We Do</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#who-its-for">Who It's For</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-  <div class="container">
-
+  <main>
     <!-- HERO -->
     <section class="hero">
-      <span class="badge">Security clarity, not security noise</span>
-      <h1>RiskBrief</h1>
-      <p>
-        RiskBrief helps founders and small teams understand, monitor, and reduce cybersecurity risk
-        without enterprise tools, heavy dashboards, or fear-based alerts.
-      </p>
+      <div class="container">
+        <span class="badge">Security clarity, not security noise</span>
+        <h1>RiskBrief</h1>
+        <p>
+          RiskBrief helps founders and small teams understand, monitor, and reduce cybersecurity risk
+          without enterprise tools, heavy dashboards, or fear-based alerts.
+        </p>
 
-      <div class="cta">
-        <a href="https://news.riskbrief.io">Explore Security News for Founders →</a>
+        <div class="cta">
+          <a href="https://news.riskbrief.io">
+            Explore Security News for Founders
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- WHAT WE DO -->
-    <section>
+    <section id="what-we-do" class="container">
       <h2>What RiskBrief does</h2>
       <p>
         Most security tools are built for SOC teams.  
@@ -121,24 +468,24 @@
       </p>
 
       <div class="grid">
-        <div class="card">
-          <h3>📰 Security news that matters</h3>
+        <div class="card fade-in">
+          <h3><span class="emoji">📰</span> Security news that matters</h3>
           <p>
             We translate cyber incidents into simple, relevant updates so founders
-            understand what applies to them — and what doesn’t.
+            understand what applies to them — and what doesn't.
           </p>
         </div>
 
-        <div class="card">
-          <h3>🛠️ Risk visibility</h3>
+        <div class="card fade-in">
+          <h3><span class="emoji">🛠️</span> Risk visibility</h3>
           <p>
             Monitor assets, certificates, and exposure areas that commonly break
             in small teams and growing companies.
           </p>
         </div>
 
-        <div class="card">
-          <h3>📋 Readiness & hygiene</h3>
+        <div class="card fade-in">
+          <h3><span class="emoji">📋</span> Readiness & hygiene</h3>
           <p>
             Understand your security posture, misconfigurations, and readiness gaps
             without audits or consultants.
@@ -148,59 +495,123 @@
     </section>
 
     <!-- PRODUCTS -->
-    <section>
+    <section id="products" class="features-section container">
       <h2>Products</h2>
 
       <div class="grid">
-        <div class="card">
+        <div class="card product-card available fade-in">
           <h3>Founder Security News</h3>
           <p>
             Curated and translated cyber news mapped to your business type and region.
           </p>
-          <p><strong>→ news.riskbrief.io</strong></p>
+          <div class="link">
+            news.riskbrief.io
+            <i class="fas fa-external-link-alt"></i>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card product-card coming-soon fade-in">
           <h3>SSL & Asset Monitoring</h3>
           <p>
             Track SSL expiry and exposed assets before they break production.
           </p>
-          <p><em>Coming soon</em></p>
+          <div class="coming-soon">Coming soon</div>
         </div>
 
-        <div class="card">
+        <div class="card product-card coming-soon fade-in">
           <h3>Security Readiness Assessment</h3>
           <p>
             A practical, founder-friendly way to understand your security posture.
           </p>
-          <p><em>Coming soon</em></p>
+          <div class="coming-soon">Coming soon</div>
         </div>
 
-        <div class="card">
+        <div class="card product-card coming-soon fade-in">
           <h3>Threat Intelligence Feed</h3>
           <p>
             Aggregated, simplified threat signals without analyst overload.
           </p>
-          <p><em>Coming later</em></p>
+          <div class="coming-soon">Coming later</div>
         </div>
       </div>
     </section>
 
     <!-- WHO IT'S FOR -->
-    <section>
+    <section id="who-its-for" class="target-audience container">
       <h2>Who RiskBrief is for</h2>
       <p>
         Founders, startup teams, agencies, and small businesses who want
         security awareness without building a SOC.
       </p>
+      
+      <div class="audience-icons">
+        <div class="audience-icon">
+          <i class="fas fa-rocket"></i>
+          <span>Founders</span>
+        </div>
+        <div class="audience-icon">
+          <i class="fas fa-users"></i>
+          <span>Startup Teams</span>
+        </div>
+        <div class="audience-icon">
+          <i class="fas fa-briefcase"></i>
+          <span>Agencies</span>
+        </div>
+        <div class="audience-icon">
+          <i class="fas fa-store"></i>
+          <span>Small Businesses</span>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <!-- FOOTER -->
-    <footer>
-      © RiskBrief.io • Informational content only • Not security advice
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>© RiskBrief.io</div>
+        <div>Informational content only</div>
+        <div>Not security advice</div>
+        <div>
+          <a href="mailto:contact@riskbrief.io">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  </div>
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
 
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply observer to cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
