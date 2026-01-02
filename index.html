@@ -28,7 +28,6 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      
     }
 
     body {
@@ -41,9 +40,8 @@
 
     .container {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       padding: 0 20px;
-      
     }
 
     /* Header */
@@ -291,8 +289,7 @@
     /* Features Section */
     .features-section {
       background-color: white;
-      border-radius: 20px;
-      padding: 60px;
+      padding: 80px 0;
       margin: 40px 0;
       box-shadow: var(--card-shadow);
     }
@@ -301,20 +298,20 @@
     .target-audience {
       background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
       color: white;
-      border-radius: 20px;
-      padding: 60px;
+      padding: 80px 0;
       margin: 40px 0;
-      text-align: center;
     }
 
     .target-audience h2 {
       color: white;
+      text-align: center;
     }
 
     .target-audience p {
       color: rgba(255, 255, 255, 0.9);
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
+      text-align: center;
     }
 
     .audience-icons {
@@ -371,6 +368,21 @@
       text-decoration: underline;
     }
 
+    /* Centered section content */
+    .section-centered {
+      text-align: center;
+    }
+
+    .section-centered h2 {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-centered p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .header-content {
@@ -401,7 +413,7 @@
 
       .features-section,
       .target-audience {
-        padding: 40px 20px;
+        padding: 60px 0;
       }
 
       .grid {
@@ -497,71 +509,75 @@
     </section>
 
     <!-- PRODUCTS -->
-    <section id="products" class="features-section container">
-      <h2>Products</h2>
+    <section id="products" class="features-section">
+      <div class="container section-centered">
+        <h2>Products</h2>
 
-      <div class="grid">
-        <div class="card product-card available fade-in">
-          <h3>Founder Security News</h3>
-          <p>
-            Curated and translated cyber news mapped to your business type and region.
-          </p>
-          <div class="link">
-            news.riskbrief.io
-            <i class="fas fa-external-link-alt"></i>
+        <div class="grid">
+          <div class="card product-card available fade-in">
+            <h3>Founder Security News</h3>
+            <p>
+              Curated and translated cyber news mapped to your business type and region.
+            </p>
+            <div class="link">
+              news.riskbrief.io
+              <i class="fas fa-external-link-alt"></i>
+            </div>
           </div>
-        </div>
 
-        <div class="card product-card coming-soon fade-in">
-          <h3>SSL & Asset Monitoring</h3>
-          <p>
-            Track SSL expiry and exposed assets before they break production.
-          </p>
-          <div class="coming-soon">Coming soon</div>
-        </div>
+          <div class="card product-card coming-soon fade-in">
+            <h3>SSL & Asset Monitoring</h3>
+            <p>
+              Track SSL expiry and exposed assets before they break production.
+            </p>
+            <div class="coming-soon">Coming soon</div>
+          </div>
 
-        <div class="card product-card coming-soon fade-in">
-          <h3>Security Readiness Assessment</h3>
-          <p>
-            A practical, founder-friendly way to understand your security posture.
-          </p>
-          <div class="coming-soon">Coming soon</div>
-        </div>
+          <div class="card product-card coming-soon fade-in">
+            <h3>Security Readiness Assessment</h3>
+            <p>
+              A practical, founder-friendly way to understand your security posture.
+            </p>
+            <div class="coming-soon">Coming soon</div>
+          </div>
 
-        <div class="card product-card coming-soon fade-in">
-          <h3>Threat Intelligence Feed</h3>
-          <p>
-            Aggregated, simplified threat signals without analyst overload.
-          </p>
-          <div class="coming-soon">Coming later</div>
+          <div class="card product-card coming-soon fade-in">
+            <h3>Threat Intelligence Feed</h3>
+            <p>
+              Aggregated, simplified threat signals without analyst overload.
+            </p>
+            <div class="coming-soon">Coming later</div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- WHO IT'S FOR -->
-    <section id="who-its-for" class="target-audience container">
-      <h2>Who RiskBrief is for</h2>
-      <p>
-        Founders, startup teams, agencies, and small businesses who want
-        security awareness without building a SOC.
-      </p>
-      
-      <div class="audience-icons">
-        <div class="audience-icon">
-          <i class="fas fa-rocket"></i>
-          <span>Founders</span>
-        </div>
-        <div class="audience-icon">
-          <i class="fas fa-users"></i>
-          <span>Startup Teams</span>
-        </div>
-        <div class="audience-icon">
-          <i class="fas fa-briefcase"></i>
-          <span>Agencies</span>
-        </div>
-        <div class="audience-icon">
-          <i class="fas fa-store"></i>
-          <span>Small Businesses</span>
+    <section id="who-its-for" class="target-audience">
+      <div class="container section-centered">
+        <h2>Who RiskBrief is for</h2>
+        <p>
+          Founders, startup teams, agencies, and small businesses who want
+          security awareness without building a SOC.
+        </p>
+        
+        <div class="audience-icons">
+          <div class="audience-icon">
+            <i class="fas fa-rocket"></i>
+            <span>Founders</span>
+          </div>
+          <div class="audience-icon">
+            <i class="fas fa-users"></i>
+            <span>Startup Teams</span>
+          </div>
+          <div class="audience-icon">
+            <i class="fas fa-briefcase"></i>
+            <span>Agencies</span>
+          </div>
+          <div class="audience-icon">
+            <i class="fas fa-store"></i>
+            <span>Small Businesses</span>
+          </div>
         </div>
       </div>
     </section>
